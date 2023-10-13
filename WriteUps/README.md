@@ -1,0 +1,4 @@
+# player WriteUps
+请选手fork本仓库之后在这里新建一个文件夹，以自己的队伍名或者用户名命名，然后将writeup置于文件夹内，并对本仓库发起一次Pull Request。
+文件夹内的格式没有要求，推荐使用pdf或者上传图片文件夹与markdown文件，请保证markdown文档内的图片引用正确。
+
