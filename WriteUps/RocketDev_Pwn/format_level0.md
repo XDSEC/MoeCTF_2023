@@ -10,7 +10,7 @@ ghidra分析为32位程序
 > Ghidra这次解析失误了，完全不可读...  
 > 用的Decompiler Explorer，BinaryNinja给出的正确代码
 >
-> ![GhidraFailure](./assets/GhidraFail.png)
+> ![GhidraFailure](https://raw.githubusercontent.com/RocketMaDev/CTFWriteup/main/assets/GhidraFail.png)
 
 反编译后，flag已被读取到栈上，并且存在printf漏洞，gdb调试可知该flag位于第7个参数  
 笨办法强攻：使用大量%p泄露栈上信息，找到flag后解析(直接%7$s会SIGSEGV)
