@@ -34,6 +34,6 @@ sh.interactive()
 > 注：arg7:'0%9$', arg8:'n000', arg9:dragonAddr；所有0都是占位符，无实际含义
 
 这道题构造payload时出了点小问题：sendline太快，最后的`1`没读到，
-要重新打，服务器读取问题要考虑！
+要重新打，服务器读取问题要考虑！遇到这种情况就要使用sendlineafter()
 
 Done.

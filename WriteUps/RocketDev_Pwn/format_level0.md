@@ -17,9 +17,10 @@ ghidra分析为32位程序
 
 ## EXPLOIT
 
-nc localhost 34109
+nc localhost 34109  
+*%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p%p*
 
-复制flag开始直到0xa的内容
+从第7个16进制数开始复制flag直到0xa的内容
 
 ```python
 txt = "<C-S-v>" # 粘贴内容

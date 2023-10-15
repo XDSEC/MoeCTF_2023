@@ -15,7 +15,7 @@ Shellcode: e8 -> call; e9 -> jmp
 相对地址为4Bytes
 
 全局变量code地址0x404089，后门函数`givemeshell`地址0x4011d6  
-那么相对地址为0x404089 + 5 - 0x4011d6 = 0xffffd148 `int8_t`
+那么相对地址为0x404089 + 5 - 0x4011d6 = 0xffffd148 `int32_t`
 
 ## EXPLOIT
 

