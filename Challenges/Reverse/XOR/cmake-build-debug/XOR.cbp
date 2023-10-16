@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="XOR"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="C:/Users/dr3/CLionProjects/XOR/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="XOR">
+				<Option output="C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/XOR.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/dr3/CLionProjects/XOR/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="D:/llvm-mingw-20220323-msvcrt-i686/lib/clang/14.0.0/include"/>
+					<Add directory="D:/llvm-mingw-20220323-msvcrt-i686/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 XOR"/>
+					<CompileFile command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="XOR/fast">
+				<Option output="C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/XOR.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/dr3/CLionProjects/XOR/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="clang"/>
+				<Compiler>
+					<Add directory="D:/llvm-mingw-20220323-msvcrt-i686/lib/clang/14.0.0/include"/>
+					<Add directory="D:/llvm-mingw-20220323-msvcrt-i686/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 XOR/fast"/>
+					<CompileFile command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/dr3/CLionProjects/XOR/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/dr3/CLionProjects/XOR/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f &quot;C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="C:/Users/dr3/CLionProjects/XOR/main.c">
+			<Option target="XOR"/>
+		</Unit>
+		<Unit filename="C:/Users/dr3/CLionProjects/XOR/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

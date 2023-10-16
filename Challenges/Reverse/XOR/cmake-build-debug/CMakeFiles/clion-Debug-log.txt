@@ -1,0 +1,17 @@
+"C:\Program Files\JetBrains\CLion 2022.2.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -DCMAKE_C_COMPILER=D:/llvm-mingw-20220323-msvcrt-i686/bin/clang.exe -DCMAKE_CXX_COMPILER=D:/llvm-mingw-20220323-msvcrt-i686/bin/clang++.exe -G "CodeBlocks - Unix Makefiles" -S C:\Users\dr3\CLionProjects\XOR -B C:\Users\dr3\CLionProjects\XOR\cmake-build-debug
+-- The C compiler identification is Clang 14.0.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check for working C compiler: D:/llvm-mingw-20220323-msvcrt-i686/bin/clang.exe
+-- Check for working C compiler: D:/llvm-mingw-20220323-msvcrt-i686/bin/clang.exe - works
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_CXX_COMPILER
+
+
+-- Build files have been written to: C:/Users/dr3/CLionProjects/XOR/cmake-build-debug

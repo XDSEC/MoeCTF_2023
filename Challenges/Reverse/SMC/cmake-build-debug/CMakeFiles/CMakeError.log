@@ -1,0 +1,21 @@
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: C:/Users/dr3/CLionProjects/SMC/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-yzzhv7
+
+Run Build Command(s):D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f Makefile cmTC_da525/fast && D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe  -f CMakeFiles/cmTC_da525.dir/build.make CMakeFiles/cmTC_da525.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/dr3/CLionProjects/SMC/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-yzzhv7'
+Building C object CMakeFiles/cmTC_da525.dir/CMakeCCompilerABI.c.obj
+D:/llvm-mingw-20220323-msvcrt-i686/bin/clang.exe   -fcolor-diagnostics   -v -MD -MT CMakeFiles/cmTC_da525.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_da525.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_da525.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCCompilerABI.c"
+clang version 14.0.0 (https://github.com/llvm/llvm-project.git 329fda39c507e8740978d10458451dcdb21563be)
+Target: i686-w64-windows-gnu
+Thread model: posix
+InstalledDir: D:/llvm-mingw-20220323-msvcrt-i686/bin
+clang-14: error: no such file or directory: 'C:/Program'
+clang-14: error: no such file or directory: 'Files/JetBrains/CLion'
+clang-14: error: no such file or directory: '2022.2.3/bin/cmake/win/x64/share/cmake-3.25/Modules/CMakeCCompilerABI.c\'
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_da525.dir/build.make:79: CMakeFiles/cmTC_da525.dir/CMakeCCompilerABI.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'C:/Users/dr3/CLionProjects/SMC/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-yzzhv7'
+mingw32-make.exe: *** [Makefile:127: cmTC_da525/fast] Error 2
+
+
+
+

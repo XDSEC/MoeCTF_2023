@@ -1,0 +1,3 @@
+C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/XOR.dir
+C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/rebuild_cache.dir

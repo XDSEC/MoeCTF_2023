@@ -1,0 +1,3 @@
+C:/Users/dr3/CLionProjects/SMC/cmake-build-debug/CMakeFiles/SMC.dir
+C:/Users/dr3/CLionProjects/SMC/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/dr3/CLionProjects/SMC/cmake-build-debug/CMakeFiles/rebuild_cache.dir

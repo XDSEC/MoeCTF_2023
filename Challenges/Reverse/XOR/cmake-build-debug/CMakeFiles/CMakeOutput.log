@@ -1,0 +1,29 @@
+The system is: Windows - 10.0.22000 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: D:/llvm-mingw-20220323-msvcrt-i686/bin/clang.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is Clang, found in "C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/3.25.2/CompilerIdC/a.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pimstg
+
+Run Build Command(s):D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe -f Makefile cmTC_0578d/fast && D:/llvm-mingw-20220323-msvcrt-i686/bin/mingw32-make.exe  -f CMakeFiles/cmTC_0578d.dir/build.make CMakeFiles/cmTC_0578d.dir/build
+mingw32-make.exe[1]: Entering directory 'C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pimstg'
+Building C object CMakeFiles/cmTC_0578d.dir/testCCompiler.c.obj
+D:/llvm-mingw-20220323-msvcrt-i686/bin/clang.exe   -fcolor-diagnostics -MD -MT CMakeFiles/cmTC_0578d.dir/testCCompiler.c.obj -MF CMakeFiles/cmTC_0578d.dir/testCCompiler.c.obj.d -o CMakeFiles/cmTC_0578d.dir/testCCompiler.c.obj -c C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pimstg/testCCompiler.c
+Linking C executable cmTC_0578d.exe
+"C:/Program Files/JetBrains/CLion 2022.2.3/bin/cmake/win/x64/bin/cmake.exe" -E rm -f CMakeFiles/cmTC_0578d.dir/objects.a
+D:/llvm-mingw-20220323-msvcrt-i686/bin/llvm-ar.exe qc CMakeFiles/cmTC_0578d.dir/objects.a @CMakeFiles/cmTC_0578d.dir/objects1
+D:/llvm-mingw-20220323-msvcrt-i686/bin/clang.exe -Wl,--whole-archive CMakeFiles/cmTC_0578d.dir/objects.a -Wl,--no-whole-archive -o cmTC_0578d.exe -Wl,--out-implib,libcmTC_0578d.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/cmTC_0578d.dir/linkLibs.rsp
+mingw32-make.exe[1]: Leaving directory 'C:/Users/dr3/CLionProjects/XOR/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-pimstg'
+
+
+
