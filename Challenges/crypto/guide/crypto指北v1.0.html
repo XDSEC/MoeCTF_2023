@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>CTF&#x5bc6;&#x7801;&#x5b66;&lpar;Crypto&rpar;&#x65b9;&#x5411;&#x5165;&#x95e8;&#x6307;&#x5317;</title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <h1 id="ctf密码学crypto方向入门指北">CTF密码学(Crypto)方向入门指北</h1>
+<p>ver 1.2 <em>By 鲤唐可可</em></p>
+<h2 id="什么是密码学cryptography">什么是密码学(Cryptography)</h2>
+<p><s>我偷懒了，不如直接放个去年的指北吧（</s></p>
+<blockquote>
+<p>与平时所说的“账号密码”不同，这里提到的密码学研究的是“加密”，而常说的“账号密码”对应的说法应该是“口令”（password）。一个明文经过密钥加密后，就会变为一段“让人看不懂”的密文，而经过密钥解密后，就会变回有意义的明文。然而，有些人没有密钥也想获取密文中的部分或者全部内容，甚至是直接利用密文去达到自己的要求，这就是CTFer在比赛中需要达成的目的。在比赛中，通常会把加密算法公开出来，然后再将密文等信息发送给参赛者，参赛者需要分析加密算法的缺点，以找到利用密文的方法。在密码学中还有许多有意思的问题，例如，如何在没有事先商定好密钥的情况下，在一个公开的网络中完成信息的秘密传输？如何确认这个信息是由朋友本人传输的而不是他人伪造？是否存在理论上不可攻破的密码体系......诸多问题，将在以后的学习中得到解答。</p>
+</blockquote>
+<h2 id="crypto方向所需要的知识">Crypto方向所需要的知识</h2>
+<h3 id="编程方面">编程方面</h3>
+<ol>
+<li>一点点python基础
+<ol>
+<li>会基本的语法即可
+<ol>
+<li>真的只要一些基本的知识</li>
+<li>就算不会也可以边写边学 <s>（事实上这是我最推荐的python学习方法）</s></li>
+</ol>
+</li>
+<li>会一些基本的python库
+<ol>
+<li><a href="https://www.pycryptodome.org/">pycryptodome</a> （密码学常用库，提供了一些基本的数学工具和包括AES RSA之类的密码库）</li>
+<li><a href="https://gmpy2.readthedocs.io/en/latest/intro.html">gmpy2</a> （一个高精度的算法库）</li>
+<li><a href="https://numpy.org/">numpy</a> （一个强大的python数学库）</li>
+</ol>
+</li>
+<li>小部分题目可能会有交互，可能要写一些脚本
+<ol>
+<li>常见的交互用的是socket,可以用pwntools来写脚本</li>
+<li>有小部分可能会用到http，可以用requests库来写脚本 <s>（具体可以参考web方向的指北（主打的就是一个方向交叉</s></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="数学方面">数学方面</h3>
+<p>可以参考<a href="https://oi-wiki.org/math/">oi-wiki</a></p>
+<p>入门是不需要太多的，但是如果想要真正成为队里的crypto扛把子，你将会接触到包括但不限于以下数学</p>
+<ol>
+<li><s>初等数论</s></li>
+<li><s>线性代数</s></li>
+<li><s>抽象代数</s></li>
+<li><s>离散数学</s></li>
+<li><s>...（前面的区域之后再来探索吧</s></li>
+</ol>
+<p><strong>但是但是但是，千万不要被数学给劝退</strong>
+<strong>但是但是但是，千万不要被数学给劝退</strong>
+<strong>但是但是但是，千万不要被数学给劝退</strong></p>
+<p>包括写这个指北的人(鲤唐可可 ver2023.06.16)，现在的数学知识也极度贫瘠，千万不要想着学完再来做crypto，打ctf和做学术是不一样的，ctf更需要的是你<strong>在面对具体题目的时候，即时学习并且运用的能力</strong>，在做题的过程中学习，也是一种学习的好方法</p>
+<h3 id="算法知识">算法知识</h3>
+<p>但是还是要指出，算法知识虽然重要，但并不是没有算法基础就做不了crypto了，更重要的是理解一些算法背后的思想，比如：</p>
+<ol>
+<li>时间复杂度 <s>（e.g. 有的时候需要小小的爆破一下，估算时间复杂度就有必要了）</s></li>
+<li>二分思想</li>
+<li>优化技巧（如快速幂等）（这些算法在上面提到的算法库里面大多都有实现，所以不一定要背下这些算法的具体实现，以了解为主）</li>
+<li>bsgs（BABY-STEP GIANT-STEP）</li>
+<li>...（可以参考<a href="https://oi-wiki.org/">oi-wiki</a>）</li>
+</ol>
+<h2 id="可能需要用到的软件工具">可能需要用到的软件&amp;工具</h2>
+<ol>
+<li>python <s>（废话，不然手算吗（</s>
+<ol>
+<li>建议使用3.10或者3.11，这两个版本不算太新，出问题容易查找解决方案，并且执行速度相对较快</li>
+</ol>
+</li>
+<li>一个写python的ide <s>（这位同学，你也不想用记事本写代码吧</s>
+<ol>
+<li>推荐vscode（</li>
+<li>pycharm也行</li>
+<li>真别用记事本，折磨自己（</li>
+<li><s>试试vim（？</s></li>
+</ol>
+</li>
+<li>Sagemath
+<ol>
+<li>这是一个基于python的强大的数学工具，并且可以使用python的语法，上手较快</li>
+<li>缺点是好像现在没有适用于windows的版本，对于使用windows的同学，你可能需要（选一个）
+<ol>
+<li>在win10或者win11上启用WSL（Windows Subsystem for Linux）</li>
+<li>装一个Linux的Virtual Machine（VMware或者VirtualBox，<s>你要用Hyper-V的话，做好觉悟吧</s>）</li>
+<li>Docker for Windows（但其实还是基于WSL2）</li>
+<li>直接用sagemath的在线服务（很慢，不推荐</li>
+</ol>
+</li>
+<li><s>sage实在用不了的话，万一matlab和mathematica可以呢（我没试过，随口说的</s></li>
+</ol>
+</li>
+</ol>
+<h2 id="比较推荐的学习方法">比较推荐的学习方法</h2>
+<ol>
+<li>学ctf前先学会如何使用搜索引擎
+<ol>
+<li>推荐使用的搜索引擎
+<ol>
+<li><a href="http://cn.bing.com">cn.bing.com</a>（国内版和国际版都还行）</li>
+<li><a href="http://www.bing.com">www.bing.com</a>（没错，这玩意和上面那个是不太一样的）</li>
+<li><a href="http://www.google.com">www.google.com</a>（别问我为什么timeout，我只能说dddd）</li>
+</ol>
+</li>
+<li>搜索引擎的使用是一门学问，要学会如何使用正确的关键词，以表达你想要的搜索结果，也可以使用一些小tricks
+<ol>
+<li><a href="https://support.google.com/websearch/answer/2466433?sjid=3142877317801133536-AP">Refine web searches</a></li>
+<li><a href="https://www.freecodecamp.org/news/how-to-google-like-a-pro-10-tips-for-effective-googling/">How to Google like a Pro</a></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>看书 <s>or paper</s>
+<ol>
+<li>包括但不限于上文中提到的关于数学方面的书</li>
+<li>也有一些关于密码学的书，也可以看看</li>
+<li>偶尔读一些论文也有帮助你的学习</li>
+<li><s>但是要做好心理准备：很多书和论文，是<strong>全英文</strong>的</s></li>
+</ol>
+</li>
+<li>看相关wiki（<s>不放链接了，找到下列网站就当作第一part的课后练习吧</s>）
+<ol>
+<li>ctf-wiki（主要是crypto分区）</li>
+<li>oi-wiki（主要是math分区）</li>
+<li>实在找不到相关词条就去wikipedia吧（<s>别问我怎么打不开，我不知道</s></li>
+</ol>
+</li>
+<li>找dalao的blog或者writeup狠狠的学习 <s>（排名不分先后，都是L team的神</s> 怎么都不更新，都是鸽子（？
+<ol>
+<li><a href="https://d33b4t0.com/">dbt的blog</a></li>
+<li><a href="https://shal10w.github.io/">shallow的blog</a></li>
+</ol>
+</li>
+</ol>
+<h2 id="遇到困难不要慌">遇到困难不要慌</h2>
+<ol>
+<li>先根据上面所列出的学习方法，进行搜索（可以找相关知识点，也可以找同类题）</li>
+<li>为什么不试试神奇的gpt和new bing呢 <s>（虽然在crypto大概率没什么用就是了</s></li>
+<li>在moectf和一些其他的新生赛中，出题人一般是乐意回答初学者关于题目的问题的，所以不妨去找找出题人，获取一点提示
+<ol>
+<li><s>但是在别的大比赛中，要提示或者flag还是算了</s></li>
+<li>课后作业part2：找到《提问的智慧》，并<strong>仔细阅读</strong>，适当摘抄笔记（bushi</li>
+</ol>
+</li>
+</ol>
+<h2 id="finally">Finally</h2>
+<p>你已经学会crypto的学习方法了，接下来就试试moectf的crypto方向吧（</p>
+<p><s>很简单的，做不出来欢迎来锤出题人（</s></p>
+<h2 id="example">Example</h2>
+<h3 id="例题ezrsa">例题：ezRSA</h3>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> secret <span class="hljs-keyword">import</span> flag <span class="hljs-comment"># 这个secret不是一个库，flag是你要自己求出来的，所以不要问为什么找不到这个库了（</span>
+
+p,q = getPrime(<span class="hljs-number">512</span>), getPrime(<span class="hljs-number">512</span>) <span class="hljs-comment"># 随机生成了两个质数</span>
+e = <span class="hljs-number">65537</span> <span class="hljs-comment"># 这是什么？</span>
+n = p*q
+m = <span class="hljs-built_in">int</span>.from_bytes(flag.encode(),<span class="hljs-string">&quot;big&quot;</span>) <span class="hljs-comment"># 把flag编码成bytes，再转换成一个长整数</span>
+c = <span class="hljs-built_in">pow</span>(m,e,n) <span class="hljs-comment"># RSA加密！</span>
+
+<span class="hljs-built_in">print</span>(p)
+<span class="hljs-built_in">print</span>(q)
+<span class="hljs-built_in">print</span>(c)
+
+<span class="hljs-comment"># p = 0xe82a76eeb5ac63e054128e040171630b993feb33e0d3d38fbb7c0b54df3a2fb9b5589d1205e0e4240b8fcb4363acaa4c3c44dd6e186225ebf3ce881c7070afa7</span>
+<span class="hljs-comment"># q = 0xae5c2e450dbce36c8d6d1a5c989598fc01438f009f9b4c29352d43fd998d10984d402637d7657d772fb9f5e4f4feee63b267b401b67704979d519ad7f0a044eb</span>
+<span class="hljs-comment"># c = 0x4016bf1fe655c863dd6c08cbe70e3bb4e6d4feefacaaebf1cfa2a8d94051d21e51919ea754c1aa7bd1674c5330020a99e2401cb1f232331a2da61cb4329446a17e3b9d6b59e831211b231454e81cc8352986e05d44ae9fcd30d68d0ce288c65e0d22ce0e6e83122621d2b96543cec4828f590af9486aa57727c5fcd8e74bd296</span>
+</code></pre>
+<h3 id="标准答案">标准答案</h3>
+<pre><code class="language-python"><span class="hljs-keyword">from</span> Crypto.Util.number <span class="hljs-keyword">import</span> * <span class="hljs-comment"># 一个非常好用的crypto库</span>
+
+p = <span class="hljs-number">0xe82a76eeb5ac63e054128e040171630b993feb33e0d3d38fbb7c0b54df3a2fb9b5589d1205e0e4240b8fcb4363acaa4c3c44dd6e186225ebf3ce881c7070afa7</span>
+q = <span class="hljs-number">0xae5c2e450dbce36c8d6d1a5c989598fc01438f009f9b4c29352d43fd998d10984d402637d7657d772fb9f5e4f4feee63b267b401b67704979d519ad7f0a044eb</span>
+c = <span class="hljs-number">0x4016bf1fe655c863dd6c08cbe70e3bb4e6d4feefacaaebf1cfa2a8d94051d21e51919ea754c1aa7bd1674c5330020a99e2401cb1f232331a2da61cb4329446a17e3b9d6b59e831211b231454e81cc8352986e05d44ae9fcd30d68d0ce288c65e0d22ce0e6e83122621d2b96543cec4828f590af9486aa57727c5fcd8e74bd296</span>
+e = <span class="hljs-number">65537</span>
+n = p*q
+phi = (p-<span class="hljs-number">1</span>) * (q-<span class="hljs-number">1</span>) <span class="hljs-comment"># 你知道什么是 欧拉函数吗 [1]</span>
+d = <span class="hljs-built_in">pow</span>(e, -<span class="hljs-number">1</span>, phi) <span class="hljs-comment"># 什么是乘法逆元？ [2]</span>
+m = <span class="hljs-built_in">pow</span>(c,d,n)
+<span class="hljs-built_in">print</span>(long_to_bytes(m))
+</code></pre>
+<ol>
+<li><a href="https://oi-wiki.org/math/number-theory/euler/">欧拉函数（Euler's totient function）</a></li>
+<li><a href="https://oi-wiki.org/math/number-theory/inverse/">模意义下乘法运算的逆元（Modular Multiplicative Inverse）</a></li>
+</ol>
+
+        
+        
+    </body>
+    </html>

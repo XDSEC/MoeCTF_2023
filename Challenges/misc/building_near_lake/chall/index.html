@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to MoeCTF 2023</title>
+    <noscript>Please enable JavaScript</noscript>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <h2>2023-2024学年度第一学期大嗨阔入门考试</h2>
+    <div>
+        一、观察下面的图片，回答以下三个问题（10分）
+    </div>
+    <div>
+        1. 拍摄地点经度（数字）：<input type="number" id="input_x">
+    </div>
+    <div>
+        2. 拍摄地点纬度（数字）：<input type="number" id="input_y">
+    </div>
+    <div>
+        3. 拍摄设备的*发布会*时间（8位数字，如2018年5月6日则为“20180506”）：<input type="number" id="input_date">
+    </div>
+    <div style="margin: 8px 0px;">
+        验证码：<span id="pow">请等待页面完全加载</span>
+        <div><input type="text" id="input_pow" disabled hidden></div>
+        <button type="button" id="btn_spow" onclick="refresh_pow">我不是机器人（点我）</button>
+    </div>
+    <div>
+        <img src="/image.jpg" width="320px">
+    </div>
+    <div>
+        tips:这图是可以放大的 坐标一般三位小数即可（
+    </div>
+    <div>
+        <button type="button" id="btn_submit" onclick="submit">提交</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
