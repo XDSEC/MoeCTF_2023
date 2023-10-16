@@ -1,0 +1,76 @@
+{
+    "comment": "too long",
+    "created by": "qBittorrent v4.5.4.10",
+    "creation date": "1691855086",
+    "info": {
+        "files": [
+            {
+                "length": "4",
+                "path": "1"
+            },
+            {
+                "attr": "p",
+                "length": "16380",
+                "path": [
+                    ".pad",
+                    "0"
+                ]
+            },
+            {
+                "length": "4",
+                "path": "3"
+            },
+            {
+                "attr": "p",
+                "length": "16380",
+                "path": [
+                    ".pad",
+                    "1"
+                ]
+            },
+            {
+                "length": "4",
+                "path": "5"
+            },
+            {
+                "attr": "p",
+                "length": "16380",
+                "path": [
+                    ".pad",
+                    "2"
+                ]
+            },
+            {
+                "length": "4",
+                "path": "2"
+            },
+            {
+                "attr": "p",
+                "length": "16380",
+                "path": [
+                    ".pad",
+                    "3"
+                ]
+            },
+            {
+                "length": "4",
+                "path": "6"
+            },
+            {
+                "attr": "p",
+                "length": "16380",
+                "path": [
+                    ".pad",
+                    "4"
+                ]
+            },
+            {
+                "length": "4",
+                "path": "4"
+            }
+        ],
+        "name": "segments",
+        "piece length": "16384",
+        "pieces": "too long"
+    }
+}

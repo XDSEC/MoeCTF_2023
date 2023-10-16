@@ -1,0 +1,7 @@
+{
+    "attachment_include":[
+        ".*main.py",
+        ".*ciphertext.txt",
+        ".*key.txt"
+    ]
+}

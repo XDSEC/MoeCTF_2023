@@ -1,0 +1,6 @@
+{
+    "attachment_include":[
+        ".*task.py",
+        ".*result.log"
+    ]
+}
