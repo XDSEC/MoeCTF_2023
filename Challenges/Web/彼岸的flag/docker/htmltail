@@ -1,0 +1,10 @@
+        </div>
+        <div class="input-area">
+            <textarea name="text" id="textarea"></textarea>
+            <div class="button-area">
+                <button id="send-btn" onclick="send()">发 送</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
