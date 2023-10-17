@@ -123,12 +123,3 @@ int main()
     puts("Right flag! Have fun in moectf2023~");
     return 0;
 }
-
-
-
-
-
-
-
-
-
