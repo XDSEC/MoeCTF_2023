@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<TextView
+		android:id="@+id/textView"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Input your flag"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.498"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.41" />
+
+	<EditText
+		android:id="@+id/input"
+		android:layout_width="300dp"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="@+id/textView"
+		app:layout_constraintStart_toStartOf="@+id/textView"
+		app:layout_constraintTop_toBottomOf="@+id/textView"
+		app:layout_constraintVertical_bias="0.032"
+		tools:ignore="MissingConstraints" />
+
+	<Button
+		android:id="@+id/check"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="CHECK"
+		app:layout_constraintEnd_toEndOf="@+id/textView"
+		app:layout_constraintStart_toStartOf="@+id/textView"
+		app:layout_constraintTop_toBottomOf="@+id/input" />
+</androidx.constraintlayout.widget.ConstraintLayout>
