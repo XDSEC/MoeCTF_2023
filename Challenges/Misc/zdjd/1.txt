@@ -1,6 +1,0 @@
-cipher: rY5Ah8BtsYYatLEPu8YCPU22Gr5PQt8YGDKkvb4bk3D4JJeEe5kgCpoEqgRzsM7m9d8jEtE3LUoKpULQnMcuAunU1gtpzC5kSUxFctFTNCMZVHLHZNCo5akzKMRY5bbyBP7RNUeGDEYoUc
-key: the tailing 8 bytes of hash of "zundujiadu?" which begin with b6091904cdfb
-iv: the end 8 bytes of hash of "dududu?" which begin with 272bf1da2207
-
-hint1: how do Bitcoin addresses encode?
-hint2: the name of cryptosystem is "bl****sh"

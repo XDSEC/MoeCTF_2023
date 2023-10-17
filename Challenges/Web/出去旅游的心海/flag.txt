@@ -1,3 +1,0 @@
-not-flag~~ but you tried hard!
-
-please click "click_me_first.php" before entering wordpress site

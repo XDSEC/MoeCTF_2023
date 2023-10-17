@@ -1,4 +1,0 @@
-flag format: moectf{xxxxxx}
-length of xxxxxx: 24
-sha256 of flag: de5d94f22a9b8eab09779102a0fcc9c566880f7807d359da6f27723f3b881584
-flag chars: 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!_?
