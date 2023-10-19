@@ -1,0 +1,59 @@
+version: '1'
+
+services:
+  flaskblog:
+    build: ./1_flaskBlog
+    ports:
+      - 8000:8080
+    links:
+      - "mysql"
+    depends_on:
+      - "mysql"
+    networks:
+      internal_net:
+        ipv4_address: 172.20.0.4
+      external_net:
+        ipv4_address: 172.21.0.3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 200M
+
+
+  mysql:
+    build: ./2_mysql
+    networks:
+      internal_net:
+        ipv4_address: 172.20.0.3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 500M
+    
+  redis:
+    build: ./3_redis
+    networks:
+      internal_net:
+        ipv4_address: 172.20.0.2
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 200M
+
+
+networks:
+  internal_net:
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+  external_net:
+    internal: false
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16
