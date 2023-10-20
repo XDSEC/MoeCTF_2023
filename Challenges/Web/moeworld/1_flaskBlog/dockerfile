@@ -1,0 +1,20 @@
+FROM python:3.9-slim
+
+
+COPY sources.list /etc/apt/sources.list
+
+COPY ./webapp /app
+COPY ./start.sh /
+COPY ./flag /flag
+COPY ./readme /readme
+RUN chmod 444 /flag
+RUN chmod 444 /readme
+RUN chmod 4755 /app/tools/fscan && chmod 4755 /app/tools/frpc && chmod 4755 /app/tools/npc
+RUN pip3 install flask pymysql retrying -i https://pypi.tuna.tsinghua.edu.cn/simple/
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+RUN echo 'Asia/Shanghai' > /etc/timezone
+RUN chmod +x /start.sh
+WORKDIR /app
+RUN adduser ctf && addgroup ctfgroup && adduser ctf ctfgroup
+USER ctf
+CMD ["/start.sh"]

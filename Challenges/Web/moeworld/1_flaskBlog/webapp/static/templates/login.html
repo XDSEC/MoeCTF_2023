@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<title>LOGIN</title>
+	<link href="static/css/login.css" rel="stylesheet" type="text/css" media="all" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+</head>
+
+<body>
+	<!-- contact-form -->
+	<div class="container">
+		<div class="inset">
+			<div class="login-head">
+				<h1>Login</h1>
+				<div class="alert-close"> </div>
+			</div>
+			<form action="/login" method="post">
+				<div>
+					<span class="demo">username</span>:
+					<input type="text" name="user" class="text" tabindex="1"><br><br>
+					<span class="demo">password</span>:
+					<input type="password" name="password" class="text" tabindex="2"><br><br>
+				</div>
+				<div class="submit">
+					<input type="submit" value="Sign in">
+					{% with messages = get_flashed_messages() %}
+					{% if messages %}
+					{% for message in messages %}
+					<p>
+						<font color="red">{{ message }}</font>
+					</p>
+					{% endfor %}
+					{% endif %}
+					{% endwith %}
+					<h4><a href="change">Change your Password ?</a></h4>
+					<div class="clear"> </div>
+					<h4><a href="register">No account ?</a></h4>
+					<div class="clear"> </div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+	</div>
+</body>
+
+</html>

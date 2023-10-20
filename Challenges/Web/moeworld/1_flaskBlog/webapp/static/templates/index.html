@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="static/css/index.css" rel="stylesheet" type="text/css" media="all" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <title>Message Board</title>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Hello, {{username}}! Leave your message.</h1>
+    </header>
+    <main>
+      <form action="/index" method="post">
+        <textarea name="message" placeholder="Write your message here"></textarea>
+        <label for="private">Private</label>
+        <input type="checkbox" id="private" name="private" />
+        <input type="submit" value="Submit" class="button">
+      </form>
+      <ul class="message-board">
+        {% for umsg in msg %}
+        <li class="message">
+          <h4>{{umsg[0]}}</h4>
+          <small>{{umsg[2][:19]}}</small>
+          <p class="userMessage">{{umsg[1]}}</p>
+          <a href="delete?psg={{umsg[4]}}">delete</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </main>
+    <footer class="footer">
+      <a href="logout" class="button">Logout</a>
+    </footer>
+  </div>
+</body>
+
+</html>

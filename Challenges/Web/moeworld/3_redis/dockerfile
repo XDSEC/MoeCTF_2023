@@ -1,0 +1,14 @@
+FROM redis:6
+
+COPY sources.list /etc/apt/sources.list
+RUN apt-get update && apt-get install -y openssh-server
+COPY redis.conf /etc/redis/redis.conf
+COPY sshd_config /etc/ssh/sshd_config
+COPY start.sh /start.sh
+COPY ./flag /flag
+RUN chmod +x /start.sh
+EXPOSE 6379
+EXPOSE 22
+
+# 运行 Redis 服务器
+CMD [ "/start.sh" ]
