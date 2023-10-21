@@ -100,10 +100,10 @@ flag显而易见就出来了
 
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/04f4b54e-8126-47ee-aff2-170cdf370346)
 
-###### 后来我才知道这玩意的文件名叫兔兔.txt还是啥，大抵是我太菜了，然后这个Flag甚至还是我撞大运搞出来的
+###### 后来我才知道这玩意的文件名叫兔兔.txt
 我们放到解密网站里面解个密（说起来这个CyberChef我现在还是不太会用，毕竟太菜）
 
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/c7449954-c28a-435b-a7fd-160818a17681)
 
-结合提交Flag的形式"moectf{*********}"，我试了一下，发现居然真是这道题的flag：moectf{Mu5ic_1s_v3ry_1nt23esting_!}
+结合提交Flag的形式"moectf{*********}"，这道题的flag：moectf{Mu5ic_1s_v3ry_1nt23esting_!}
 
