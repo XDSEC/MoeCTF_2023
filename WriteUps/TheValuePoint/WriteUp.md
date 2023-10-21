@@ -92,7 +92,7 @@ flag显而易见就出来了
 
 ## 你想要Flag吗？
 ###### 做到这道题的时候，莫名的想到一款JustM****a的游戏
-首先我们用AE打开这个音频，顺便打开频谱图：
+首先我们用AU打开这个音频，顺便打开频谱图：
 
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/6ac00d31-0ce7-4234-a63e-f9c0ba43cdc1)
 
