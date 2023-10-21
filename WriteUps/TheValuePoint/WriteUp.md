@@ -49,6 +49,14 @@ flag显而易见就出来了
 
 上传一下，就可以得到Flag了
 
+## 压缩包套娃那道题（叫啥我忘记了）
+由于本人太菜，不会写脚本，所以只能上网去找工具
+
+工具网址： https://www.52pojie.cn/thread-1741836-1-1.html
+
+里面也说明了这玩意咋用。
+#### Tip：要想解压这个压缩包还得先创建个文件夹，然后把这个压缩包放进去才能一直解压缩，不然就准备强制粉碎文件吧
+
 ## 机位查询
 
 第一张图，可以看到这是在南宁站附近
@@ -60,3 +68,27 @@ flag显而易见就出来了
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/7282b0ec-7855-49ac-ac31-5c7940d1f097)
 
 从这两建筑物就可以推断是在：
+
+![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/ccb03874-8c15-4898-a643-63dd1f5ace93)
+
+注意到：
+
+![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/cf949b67-d260-48cf-b6d7-27c8a3a8cb9e)
+
+所以我们可以判定是在：
+
+![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/f6530d05-1ad6-4bd3-a505-b32316a8b455)
+
+第一个就是Jiashi
+#### 一开始我还以为人家叫摩根大厦，没想到人家前面还有个嘉士……
+
+第二张图，有着极其亮眼的“中山路美食街”这六个大字，然后搜一下，
+
+![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/20de6e41-463d-44e6-863e-1db509f5a782)
+
+然后发现这附近能俯拍的也就百盛了，所以是Baisheng
+
+第三张图有定位，所以直接一看发现是在汇金苑，所以是huijin
+
+
+
