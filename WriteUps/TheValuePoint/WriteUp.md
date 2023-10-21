@@ -1,8 +1,7 @@
 # WriteUp
 ### Author:TheValuePoint
 
-## Misc WriteUp
-打不开的图片1
+## 打不开的图片1
 用010Editor打开这个文件（加个后缀".txt"也行）
 
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/1a748c5a-4a13-4070-b8aa-fb82c2e76e85)
@@ -32,9 +31,13 @@ flag显而易见就出来了
 
 ## building_near_lake
 //一开始做这道题的时候没注意到是“发布会时间”，还以为是拍摄时间，还跑去问出题人……审题真的很重要啊。
+
 //据说红米配天玑，越用越懵逼，不知道是不是真的（笑）
+
 我们把这张图片用百度搜一下，轻而易举的发现这个在厦门大学翔安校区，然后用Google Earth等地图软件就可以知道这个的"WGS84"坐标，上网随便找个转换器就可以知道这个的BD09坐标了
+
 118.317702, 24.612586
+
 接着打开010Editor：
 
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/96995629-586c-409f-bede-1b1af36af07a)
@@ -44,7 +47,9 @@ flag显而易见就出来了
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/b97e70a5-b523-4198-a0cb-b5bd346e1724)
 
 上传一下，就可以得到Flag了
-机位查询
+
+## 机位查询
+
 第一张图，可以看到这是在南宁站附近
 ![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/7282b0ec-7855-49ac-ac31-5c7940d1f097)
 
