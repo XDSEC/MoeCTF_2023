@@ -1,4 +1,4 @@
-![image](https://github.com/TheValuePoint/MoeCTF_2023/assets/58455675/e6f2c61d-966c-4160-aa2d-b52c85d574a6)# WriteUp
+# WriteUp
 ### Author:TheValuePoint
 
 ## Misc WriteUp
