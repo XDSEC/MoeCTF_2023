@@ -77,7 +77,7 @@ void HomeGrownFrame(void)
     {
         push handler
         push FS : [0]
-        mov FS : [0] , ES_PASSWORD
+        mov FS : [0] , ESP
         int 3
         mov eax, [ESP]
         mov FS : [0] , EAX
