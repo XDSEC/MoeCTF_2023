@@ -151,7 +151,7 @@ moectf{wow_you_aRe_the_masteR_of_Zundujiadu_92WPIBung92WPIBung9?WPIBung}
 
 ---
 
-## CHALLENGE: 题目忘了，和压缩包有关，里面嵌套压缩包
+## CHALLENGE: 狗子(3) 寝室
 ### 本题里面压缩包套压缩包，而且zip rar tar三种随机出现，故使用python进行循环解压就行
 
 ```py
@@ -179,5 +179,37 @@ while True:
     
 ```
 
+## CHALLENGE: 你想要Flag吗
+### 找到音频文件首先就是拖入Au看看了
+发现：
+```
+key:Bulbasaur
+pwd:youseeme
+```
+那么显然，可以使用steghide导出里面藏的东西
+```
+steghide extract -sf 1.WAV -xf 1.txt
+```
 
-### 注：写WP时题目未完全上传到github，所以还没写完！
+那么不显然，可以使用rabbit加密可以解出flag:
+```
+moectf{Mu5ic_1s_v3ry_1nt23esting_!}
+```
+
+
+## CHALLENGE: weird_package
+```
+使用7-Zip软件可以直接读取，无视里面改的内容
+```
+
+```
+得到了9个文件，从1111到9999
+```
+
+```由于本题是在处理压缩包，所以我很自然想到压缩包压缩算法，所以就写出来了```
+
+https://cyberchef.org/#recipe=From_Base64('A-Za-z0-9%2B/%3D',true,false)Raw_Inflate(0,0,'Block',false,false)From_Base64('A-Za-z0-9%2B/%3D',true,false)&input=RmNQQkNzSXdEQURRWHpKdUhuTDBVRUlGR2JaTHR1eG1ONHRJSW9JZ1kxOC9QTHd5b0dtVC9BRkxWRWsxa1lVUjdMY0loZ0xJZjVtazZuaDVaYkxqMUdPTnczcTdrazBsZkR6eVladmYwblk4bjhUMW1SM2JPOE8zNjg5Ym9SVjM&oenc=65001
+
+```1111-8888文件中都是假flag，最后一个是真的```
+
+moectf{WHaT_DiD_You_Do_To_THe_arcHive?_!lP0iYlJf!M3rux9G9Vf!JoxiMl903ll}
