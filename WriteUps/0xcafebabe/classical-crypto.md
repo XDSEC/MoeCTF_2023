@@ -40,15 +40,15 @@ https://cyberchef.org/#recipe=Rail_Fence_Cipher_Decode(3,0)&input=bXQzX2hzVGFsM3
 ## CHALLENGE: morse
 ### 没做出来，因为当时以为一个字符对应一个-或者.，后来看到别人的WP才恍然大悟
 ```
-喵喵？ -> .
-喵喵喵 -> -
+喵喵？ -> -
+喵喵喵 -> .
 ```
 
 ```
-. ---- - --..-. .-. -. -.. -. -- -- --..-. .-.- -. . --..-. .--- --. . --..-. .--- - --..-. .-.- -. -.-- -.-- - .-- --..-. ..- ... --. ..-- -- --..-. .--- .-.. --..-. -.- .--.
+- .... . ..--.- -.- .- .-- .- .. .. ..--.- -.-. .- - ..--.- -... ..- - ..--.- -... . ..--.- -.-. .- .-.. .-.. . -.. ..--.- --. --- ..- --.. .. ..--.- -... -.-- ..--.- .-. -..-
 ```
 
-https://cyberchef.org/#recipe=From_Morse_Code('Space','Line%20feed')&input=LiAtLS0tIC0gLS0uLi0uIC4tLiAtLiAtLi4gLS4gLS0gLS0gLS0uLi0uIC4tLi0gLS4gLiAtLS4uLS4gLi0tLSAtLS4gLiAtLS4uLS4gLi0tLSAtIC0tLi4tLiAuLS4tIC0uIC0uLS0gLS4tLSAtIC4tLSAtLS4uLS4gLi4tIC4uLiAtLS4gLi4tLSAtLSAtLS4uLS4gLi0tLSAuLS4uIC0tLi4tLiAtLi0gLi0tLg
+https://cyberchef.org/#recipe=From_Morse_Code('Space','Line%20feed')&input=LSAuLi4uIC4gLi4tLS4tIC0uLSAuLSAuLS0gLi0gLi4gLi4gLi4tLS4tIC0uLS4gLi0gLSAuLi0tLi0gLS4uLiAuLi0gLSAuLi0tLi0gLS4uLiAuIC4uLS0uLSAtLi0uIC4tIC4tLi4gLi0uLiAuIC0uLiAuLi0tLi0gLS0uIC0tLSAuLi0gLS0uLiAuLiAuLi0tLi0gLS4uLiAtLi0tIC4uLS0uLSAuLS4gLS4uLQ
 
 最后加上moectf{}即可
 

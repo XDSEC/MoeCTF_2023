@@ -481,6 +481,20 @@ moectf{WoOo00Oow_S0_interesting_y0U_C4n_C41l_M3tW1c3_BY_Unw1Nd~}
 本题较难，不过如果使用python解密TEA可能在代码编写上会简单一些
 
 
+## CHALLENGE: RUST
+```
+DESCRIPTION: Rust是一种正在流行的编程语言
+编译出来的程序中，部分操作由Rust的库函数提供，且有一些Rust自带的数据结构
+如果不知道这个函数在做什么，或者难以阅读，可以查找一些Rust逆向题目进行学习，或者利用AI，搜索引擎等搜索出现的库函数的关键字
+Note:本题提供ELF，rust在编译为Elf的时候更容易阅读
+Update:使用较低版本libc的选手，请使用以下版本进行做题https://wwi.lanzoup.com/i9pzF1636e5g
+hint:Rust编译出的函数会包含一些语言中的元信息，导致加载出的符号包含一些看起来不可读的符号与随机字符串。如果想要修复这样的函数名，让我们能够查阅这些函数作用，可以使用这个ida插件https://github.com/timetravelthree/IDARustDemangler 。请阅读其安装指南，它需要 rs-dml 作为前置，而 rs-dml 需要通过cargo安装
+```
+
+### 载入IDA 找到main函数
+![Alt text](/resources/image-2.png)
+### 发现这样一个数组，那么直接猜测是单一XOR，分别与moectf{进行异或发现确实是单一XOR，那么flag直接拿下
+
 ## CHALLENGE: GUI 
 
 ### 由于时间仓促，直接上x64dbg了，本题没有进行详细分析，直接输入
@@ -492,6 +506,7 @@ abcdef...zABCDEF...Z012...9
 
 ### 赛后思考：其实可以拖入IDA，控制流显然（不过本人IDA用的不熟练。
 
+---
 
 ## CHALLENGE: "天网"
 
