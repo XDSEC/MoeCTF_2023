@@ -1,0 +1,7 @@
+CHALLENGE: A very happy MLP
+DESCRIPTION: 
+Without training, you can make this Multilayer Perceptron happy :)
+Just like solving an equation, f(x+flag)=y.
+Knowing x, y and f(), every one can get the flag and please the MLP.
+Be kind to every wild MLP.
+Amen.
