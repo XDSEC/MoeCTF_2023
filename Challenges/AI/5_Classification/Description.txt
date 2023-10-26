@@ -1,0 +1,5 @@
+CHALLENGE: Classification
+DESCRIPTION: 
+We saved some images from IMAGE NET, but there are way more to be rescued...
+They seems injured, but still recognizable.
+Anyway, find out who they are and send them home for now. Hurry!
