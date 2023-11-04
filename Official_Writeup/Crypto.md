@@ -511,8 +511,109 @@ def solve_c(x1,x2,a,m):
 
 （交互部分没写，可以手动交互几次求m a c三个参数，然后回代求下个输出，多跑几次一般即可出结果）
 
-## feistel
+## feistel 1/2
 
-## feistel_promax
+*WriteUp by shallow*
 
+两题是一模一样的题面，区别仅在于feistel1给了密钥，仅需要根据加密算法逆向得到解密算法，而feistel2没有给密钥，需要对算法进行分析，从而获取密钥，解密flag。
+
+题目名叫feistel，这是一种重要的对称加密结构，许多常见加密算法都是用了feistel结构，包括DES（现在已经不安全），我国国密算法SM4（使用了非对称feistel结构）等。它的结构如图所示![](./res/1.jpg)可以看到它的最大的特点是加密与解密的结构完全一样，因此在电路实现时不需要额外实现解密电路。同时它不需要f可逆，即使f不可逆，feistel结构仍然还是能够实现加解密。因此相当一部分的对称密码都会采用feistel结构（也有不用的，比如现在更常用的AES使用的是SPN结构）
+
+因此feistel1的解密几乎不需要额外写代码，把题目中的`ebc_enc`函数的第一行删了，直接把密文再丢回去，就能解密成功了。
+```python
+'''
+题目中的enc代码
+def ecb_enc(m , key):
+    m = padding(m)
+    mlen = len(m)
+    c = b''
+    for i in range(mlen // 16):
+        c += enc(m[i*16:i*16+16] , key , round)
+    return c   
+'''
+def ecb_enc(m , key):
+    mlen = len(m)
+    c = b''
+    for i in range(mlen // 16):
+        c += enc(m[i*16:i*16+16] , key , round)
+    return c
+c =b'\x0b\xa7\xc6J\xf6\x80T\xc6\xfbq\xaa\xd8\xcc\x95\xad[\x1e\'W5\xce\x92Y\xd3\xa0\x1fL\xe8\xe1"^\xad'
+print(ecb_enc(c , b'wulidego'))
+#b'moectf{M@g1cA1_Encr1tion!!!}\x04\x04\x04\x04'
+```
+
+而feistel2则需要我们分析中间的函数f。在分析f前，这题和feistel1还有个小区别是多加了个padding，也就是这题会给明文加两个padding以后再加密，那么它会被填充到16的倍数后，再填充16个`b'\x10'`，这是一个已知明文块。根据这个明文块，以及feistel结构，我们可以得到最后一轮的f的输入为密文右半边，输出为密文左半边^明文右半边。因此我们能够得到一组f的输入输出，可以对f进行已知明文攻击。
+
+f的结构如下~~这个函数其实是我自己乱敲的，它甚至在key为偶数的时候不可逆，但好在feistel不需要可逆。敲完发现发现好像能打，就扔上来了~~
+```python
+def f(m , key):
+    m = m ^ (m >> 4)
+    m = m ^ (m << 5)
+    m = m ^ (m >> 8)
+    m ^= key
+    m = (m * 1145 + 14)  % 2**64
+    m = (m * 1919 + 810) % 2**64 
+    m = (m * key) % 2**64
+    return m
+```
+它的前三行是一个常用的可逆线性变换，比如python的random库用的梅森旋转算法就会用到这个变换（可以试试如何逆向）。但在本题中没有作用，因为它在密钥异或前，我们可以直接自己对输入做这三步，就能够直接跳过这部分，仅需要考虑后四行。
+
+后四行先进行了线性的异或运算，再进行了乘法与加法，都是相对异或是非线性运算。这里主要的问题在于模数使用了`2^64`这个2的幂次。因为异或运算是位运算，不同位之间不会相互干扰，而`2^64`同样有部分这样的性质。这里需要一点简单的数论知识（**上过小学**），即模`2^64`成立的方程，模`2^k`，只要k<64，都是成立的。也就是说高位的运算其实不会干扰低位，若我们把k设成1，那么可以有以下的一个函数
+```python
+def f_last(m,key):
+    m ^= key
+    m = (m * 1145 + 14)  % 2
+    m = (m * 1919 + 810) % 2 
+    m = (m * key) % 2
+    return m
+```
+可以验证，这个函数的输出，其实跟原先函数的输出的最低位是相同的。那么这个函数已知明密文求key是非常容易的，因为只有一位，key的取值不是1就是0，枚举一下就行。枚举完就能够得到key的最低位的取值，然后可以逐位增大k，k等于2时，就能够得到key的最后2位，以此类推。也正因为如此，如果真把这个函数展开成逻辑函数，变成方程组，低位的方程不涉及高位变量，逐步求解也是容易的，本题就有选手使用了z3求解，也能很快做出结果。
+
+如果不用z3求解，其实也不是一个循环就能解决的，还是需要一点小技巧。在`f_last`这个函数中，可以发现key不一定是唯一的，可以验证，当`m=1`时，不管key的最后一位是多少，`c=0`都成立（不可逆.jpg），所以这里需要**学过python**，尽管有些情况是存在多个key的，但大部分的key其实还是不满足条件的，因此这里需要一点点算法小技巧，使用广度优先搜索（BFS）去搜索key，从而得到所有key的候选值。
+```python
+from Crypto.Util.number import *
+def pre_rm(rm):
+    rm = rm ^ (rm >> 4)
+    rm = rm ^ (rm << 5)
+    rm = rm ^ (rm >> 8)
+    return rm
+def f1(rm , rc , m , key):
+    rm ^= key
+    rm = (rm * 1145 + 14)  % m
+    rm = (rm * 1919 + 810) % m 
+    rm = (rm * key) % m
+    if rm == (rc % m):
+        return 1
+    else:
+        return 0
+def getkey(m , c):
+    rm = pre_rm(bytes_to_long(m[8:]))
+    rc = bytes_to_long(c[8:]) ^ bytes_to_long(m[:8])
+    guesslist = [0]
+    for i in range(64):
+        res = []
+        m = 2**(i+1)
+        for pre_guess in guesslist:
+            guess1 = (1 << i) + pre_guess
+            guess0 = pre_guess
+            if f1(rm , rc , m , guess0):
+                res.append(guess0)
+            if f1(rm , rc , m , guess1):
+                res.append(guess1)
+        guesslist = res
+    return guesslist
+
+c = b'B\xf5\xd8gy\x0f\xaf\xc7\xdf\xabn9\xbb\xd0\xe3\x1e0\x9eR\xa9\x1c\xb7\xad\xe5H\x8cC\x07\xd5w9Ms\x03\x06\xec\xb4\x8d\x80\xcb}\xa9\x8a\xcc\xd1W\x82[\xd3\xdc\xb4\x83P\xda5\xac\x9e\xb0)\x98R\x1c\xb3h'
+tempm = b'\x10'*16
+tempc = c[-16:]
+possible_key = getkey(tempm , tempc)
+```
+本题给的数据大概是有四个候选密钥，但由于解密明文是flag，是可见字符串，并且还有`moectf{}`的前后缀，信息熵不大，因此用这几个候选密钥解密后找可见字符串即可获得flag
+```
+#四个候选密钥的解密结果
+b'moectf{F_func_1s_n1t_Ve5y_$EcU%e}\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10\x10'
+b'\x16\xcfectf{F\xdffunc_1s_n1t_Ve5y_$EcU%e\x1b\xaf\x0f\x0f\x0f\x0f\x0f\x0f\x8f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\xfe\xb0\x10\x10\x10\x10\x10\x10\x90\x10\x10\x10\x10\x10\x10\x10'
+b'\xab\x0c\n<\xc7\xcf\x1f\x06k\x00{\xd7\x89\x15W\xd9\xaao:\xceTD\x14[\n\xe8\x91u)\x1f.a=9\x8e\xd0\x0c_\xeew\xe2\x14\xe5\xba\x02\xb68\x1d\xf5cb2\x93\xbbM~M\xcf\x05\xc2O7\xe6\x86'
+b'\xa6\xbc\n<\xc7\xcf\x1f\x06\xeb\x00{\xd7\x89\x15W\xd9*o:\xceTD\x14[\n\xe8\x91u)\x1f.aa\x89\x8e\xd0\x0c_\xeewb\x14\xe5\xba\x02\xb68\x1d\xae\xf3b2\x93\xbbM~\xcd\xcf\x05\xc2O7\xe6\x86'
+```
 
