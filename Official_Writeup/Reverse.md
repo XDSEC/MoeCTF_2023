@@ -353,7 +353,7 @@ SMC，即自修改代码。
 ![img_8.png](./moectf2023-Reverse/img_8.png)
 为+57再异或0x39，自行解密即可
 
-**## ANDROID**
+## ANDROID
 
 简单安卓逆向
 
@@ -419,3 +419,8 @@ v38作为是否正确判断，分别打印不同的输出
 
 到这里就很清楚了，异或即可
 ![img_14.png](./moectf2023-Reverse/img_14.png)
+
+## unwind
+
+题目很简单，源码和exp均已给出。输入函数中存在反调试，自己patch掉即可。然后是TEA加密。对于后一半flag，触发异常后，由于栈展开，调用了2次TEA加密。
+关于这部分的详细内容可以查看[深入解析结构化异常处理(SEH)](https://blog.csdn.net/aa13058219642/article/details/80253609)的第二节。关于本题也有选手写了详细的解题报告可以查看：[Windows x86 SEH 机制暨MoeCTF2023 Unwind 解题报告](https://blog.littflower.top/posts/moectf2023-unwind-and-a-little-windows-seh/)，~~我就不再抄一遍了（逃~~
