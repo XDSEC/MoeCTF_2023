@@ -11,7 +11,7 @@ ida反编译就能看到falg。或者按照指北里仔细数数，填入正确�
 
 >  [pyc反编译](https://tool.lu/pyc/)把`base_64.pyc`反编译得到python代码
 
-```
+```python
 #!/usr/bin/env python
 # visit https://tool.lu/pyc/ for more information
 # Version: Python 3.7
@@ -60,7 +60,7 @@ upx -d upx!.exe脱壳
 
 最后写个脚本出来
 
-```
+```python
 from z3 import *
 s=Solver()
 flag = [Int("flag[%d]"%i) for i in range(31)]
@@ -98,7 +98,7 @@ cyberchef一把梭
 
 所以我们要在xxxxx处分析汇编代码，找出花指令并nop掉
 
-```
+```as
 .text:004605F5 33 C0                         xor     eax, eax
 .text:004605F7 89 45 E4                      mov     [ebp-1Ch], eax
 .text:004605FA 89 45 E8                      mov     [ebp-18h], eax
@@ -149,7 +149,7 @@ IDA打开之后可以看到是一个很标准的Windows程序
 
 `WndClass.hpfnWnProc = sub_450CDF`这一句是注册回调函数，而`sub_450CDF`则是我们要找处理消息的回调函数
 
-```
+```c
 LRESULT __stdcall sub_45BF90(HWND hWndParent, UINT Msg, WPARAM wParam, LPARAM lParam)
 {
   HWND DlgItem; // eax
@@ -258,7 +258,7 @@ GetWindowTextW(DlgItem, String, 1024);
 
 再调后面的，会到这里
 
-```
+```c
 int __cdecl sub_74E010(unsigned __int16 *a1, unsigned __int16 *a2, int a3)
 {
   __CheckForDebuggerJustMyCode(&unk_81801A);
@@ -285,7 +285,7 @@ int __cdecl sub_74E010(unsigned __int16 *a1, unsigned __int16 *a2, int a3)
 
 最后，提取出比较的那个数组，再异或回去即可。
 
-```
+```python
 enc=[0x0039, 0x003B, 0x0031, 0x000F, 0x003E, 0x0030, 0x0027, 0x0013, 0x0001, 0x007D, 0x0070, 0x0070, 0x0003, 0x007D, 0x0038, 0x000E, 0x007A, 0x0023, 0x007C, 0x000B, 0x001A, 0x003C, 0x007D, 0x0039, 0x007F, 0x003C, 0x004D, 0x004D, 0x004D, 0x0029]
 for i in range(len(enc)):
   print(chr((enc[i]^0x51)+5),end="")
