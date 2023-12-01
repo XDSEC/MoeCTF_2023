@@ -144,7 +144,7 @@ get(api_base+"flag",cookies={
 })();
 ```
 
-## moe图床
+## meo图床
 
 访问uploads.php发现给了源码
 
@@ -295,7 +295,7 @@ xml_content=%3C!DOCTYPE%20test%20%5B%20%3C!ENTITY%20xxe%20SYSTEM%20%22file%3A%2F
 
 ~~题目源码里可以看见彩蛋是怎么生成的~~
 
-## meo图床
+## moe图床
 
 此题并不是文件上传漏洞，而是简单的路径穿越和一些php代码审计
 
