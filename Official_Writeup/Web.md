@@ -144,7 +144,7 @@ get(api_base+"flag",cookies={
 })();
 ```
 
-## moe图床
+## meo图床
 
 访问uploads.php发现给了源码
 
